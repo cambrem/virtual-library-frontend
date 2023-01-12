@@ -62,14 +62,18 @@ export default function AddBook() {
                             <label htmlFor='rating' className='form-label'>
                                 Rating
                             </label>
-                            <input
-                                type={'text'}
+                            <select
                                 className='form-control'
-                                placeholder='Enter score out of 10'
                                 name='rating'
                                 value={rating}
                                 onChange={(e) => onInputChange(e)}
-                            />
+                            >
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5</option>
+                            </select>
                         </div>
                         <div className='mb-3'>
                             <label htmlFor='notes' className='form-label'>
