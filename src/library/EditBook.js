@@ -11,10 +11,11 @@ export default function EditBook() {
     const [book, setBook] = useState({
         title: "",
         author: "",
-        rating: ""
+        rating: "", 
+        notes: ""
     })
 
-    const { title, author, rating } = book
+    const { title, author, rating, notes} = book
 
     const onInputChange = (e) => {
         setBook({ ...book, [e.target.name]: e.target.value })
@@ -79,6 +80,21 @@ export default function EditBook() {
                                 name='rating'
                                 value={rating}
                                 onChange={(e) => onInputChange(e)}
+                            />
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor='notes' className='form-label'>
+                                Notes
+                            </label>
+                            <textarea
+                                className='form-control'
+                                placeholder='Add notes about the book'
+                                name='notes'
+                                value={notes}
+                                onChange={(e) => onInputChange(e)}
+                                style={{ resize: 'none' }}
+                                rows='3'
+                                wrap='soft'
                             />
                         </div>
                         <button type='submit' className='btn btn-outline-primary'>

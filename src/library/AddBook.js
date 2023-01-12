@@ -75,13 +75,15 @@ export default function AddBook() {
                             <label htmlFor='notes' className='form-label'>
                                 Notes
                             </label>
-                            <input
-                                type={'text'}
+                            <textarea
                                 className='form-control'
                                 placeholder='Add notes about the book'
                                 name='notes'
                                 value={notes}
                                 onChange={(e) => onInputChange(e)}
+                                style={{ resize: 'none' }}
+                                rows='3'
+                                wrap='soft'
                             />
                         </div>
                         <button type='submit' className='btn btn-outline-primary'>
