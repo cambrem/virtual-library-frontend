@@ -9,10 +9,11 @@ export default function AddBook() {
     const [book, setBook] = useState({
         title: "",
         author: "",
-        rating: ""
+        rating: "",
+        notes: ""
     })
 
-    const { title, author, rating } = book
+    const { title, author, rating, notes } = book
 
     const onInputChange = (e) => {
         setBook({ ...book, [e.target.name]: e.target.value })
@@ -67,6 +68,19 @@ export default function AddBook() {
                                 placeholder='Enter score out of 10'
                                 name='rating'
                                 value={rating}
+                                onChange={(e) => onInputChange(e)}
+                            />
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor='notes' className='form-label'>
+                                Notes
+                            </label>
+                            <input
+                                type={'text'}
+                                className='form-control'
+                                placeholder='Add notes about the book'
+                                name='notes'
+                                value={notes}
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>

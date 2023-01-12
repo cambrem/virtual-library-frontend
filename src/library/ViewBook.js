@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
@@ -8,7 +7,8 @@ export default function ViewBook() {
     const [book,setBook]=useState({
         title:'',
         author:'',
-        rating:''
+        rating:'',
+        notes:''
     })
 
     const {id}=useParams();
@@ -29,7 +29,6 @@ export default function ViewBook() {
                     <h2 className='text-center m-4'>Book Details</h2>
                     <div className='card'>
                         <div className='card-header'>
-                            Details of user id: {book.id}
                             <ul className='list-group list-group-flush'>
                                 <li className='list-group-item'>
                                     <b>Title: </b>
@@ -42,6 +41,10 @@ export default function ViewBook() {
                                 <li className='list-group-item'>
                                     <b>Rating: </b>
                                     {book.rating}
+                                </li>
+                                <li className='list-group-item'>
+                                    <b>Notes: </b>
+                                    {book.notes}
                                 </li>
                             </ul>
                         </div>
