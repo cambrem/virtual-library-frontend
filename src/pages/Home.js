@@ -30,38 +30,27 @@ export default function Home() {
                             <th scope="col">Title</th>
                             <th scope="col">Author</th>
                             <th scope="col">Rating</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Actions</th>
                         </tr>
-                    </thead>
+                    </thead> 
                     <tbody>
                         {
-                            library.map((book, index) => (
-                                <tr>
-                                    <th scope="row" key={index}>{index + 1}</th>
-                                    <td>{book.title}</td>
-                                    <td>{book.author}</td>
-                                    <td>{book.rating}</td>
-                                    <td>
-                                        <Link
-                                            className="btn btn-primary mx-2"
-                                            to={`/viewbook/${book.id}`}
-                                        >
-                                            View
-                                        </Link>
-                                        <Link
-                                            className="btn btn-outline-primary mx-2"
-                                            to={`/editbook/${book.id}`}
-                                        >
-                                            Edit
-                                        </Link>
-                                        <button className='btn btn-danger mx-2'
-                                            onClick={() => deleteBook(book.id)}
-                                        >Delete</button>
-                                    </td>
-                                </tr>
-                            ))
+                            library
+                                .sort((a, b) => b.rating - a.rating)
+                                .map((book, index) => (
+                                    <tr key={book.id}>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{book.title}</td>
+                                        <td>{book.author}</td>
+                                        <td>{book.rating}</td>
+                                        <td>
+                                            <Link className="btn btn-primary mx-2" to={`/viewbook/${book.id}`}>View</Link>
+                                            <Link className="btn btn-outline-primary mx-2" to={`/editbook/${book.id}`}>Edit</Link>
+                                            <button className="btn btn-danger mx-2" onClick={() => deleteBook(book.id)}>Delete</button>
+                                        </td>
+                                    </tr>
+                                ))
                         }
-
                     </tbody>
                 </table>
             </div>

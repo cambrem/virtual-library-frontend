@@ -7,7 +7,7 @@ export default function Navbar() {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                     <Link
-                        className="navbar-brand" to='/'>Virtual Library
+                        className="navbar-brand" to='/'>My Library
                     </Link>
                     <button
                         className="navbar-toggler"
