@@ -30,6 +30,7 @@ export default function Home() {
                             <th scope="col">Title</th>
                             <th scope="col">Author</th>
                             <th scope="col">Genre</th>
+                            <th scope="col">Date Finished</th>
                             <th scope="col">Rating</th>
                             <th scope="col">Actions</th>
                         </tr>
@@ -44,6 +45,7 @@ export default function Home() {
                                         <td>{book.title}</td>
                                         <td>{book.author}</td>
                                         <td>{book.genre}</td>
+                                        <td>{book.dateFinished}</td>
                                         <td>{book.rating}</td>
                                         <td>
                                             <Link className="btn btn-secondary mx-2" to={`/viewbook/${book.id}`}>View</Link>
