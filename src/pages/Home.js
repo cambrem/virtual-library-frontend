@@ -20,13 +20,34 @@ export default function Home() {
         loadLibrary()
     }
 
+    let [sortBy, setSortBy] = useState('');
+
+    const handleChange = (event) => {
+        setSortBy(event.target.value);
+    }
+
     return (
         <div className='container'>
             <div className='py-4'>
                 <table className="table border shadow">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">
+                                <label htmlFor='sortBy' className='form-label'>
+                                    Sort By
+                                </label>
+                                <select
+                                    className='form-control'
+                                    name='sortBy'
+                                    value={sortBy}
+                                    onChange={handleChange}
+                                >
+                                    <option value={''}>Select</option>
+                                    <option value={'rating'}>Rating</option>
+                                    <option value={'dateFinished'}>Date Finished</option>
+                                    <option value={'genre'}>Genre</option>
+                                </select>
+                            </th>
                             <th scope="col">Title</th>
                             <th scope="col">Author</th>
                             <th scope="col">Genre</th>
@@ -34,11 +55,15 @@ export default function Home() {
                             <th scope="col">Rating</th>
                             <th scope="col">Actions</th>
                         </tr>
-                    </thead> 
+                    </thead>
                     <tbody>
                         {
                             library
-                                .sort((a, b) => b.rating - a.rating)
+                                .sort((a, b) => {
+                                    if (sortBy === 'genre') { return a.genre.localeCompare(b.genre) }
+                                    else if (sortBy === 'dateFinished') { return new Date(a.dateFinished) - new Date(b.dateFinished) }
+                                    else if (sortBy === 'rating') { return b.rating - a.rating }
+                                })
                                 .map((book, index) => (
                                     <tr key={book.id}>
                                         <th scope="row">{index + 1}</th>
