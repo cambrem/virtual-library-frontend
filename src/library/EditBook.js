@@ -11,11 +11,13 @@ export default function EditBook() {
     const [book, setBook] = useState({
         title: "",
         author: "",
+        genre: "",
+        dateFinished: "",
         rating: "", 
         notes: ""
     })
 
-    const { title, author, rating, notes} = book
+    const { title, author, genre, dateFinished, rating, notes} = book
 
     const onInputChange = (e) => {
         setBook({ ...book, [e.target.name]: e.target.value })
@@ -66,6 +68,33 @@ export default function EditBook() {
                                 placeholder='Enter book author'
                                 name='author'
                                 value={author}
+                                onChange={(e) => onInputChange(e)}
+                            />
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor='genre' className='form-label'>
+                                Genre
+                            </label>
+                            <select
+                                className='form-control'
+                                name='genre'
+                                value={genre}
+                                onChange={(e) => onInputChange(e)}
+                            >
+                                <option value={"Fiction"}>Fiction</option>
+                                <option value={"Non-Fiction"}>Non-Fiction</option>
+                            </select>
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor='dateFinished' className='form-label'>
+                                Date Finished
+                            </label>
+                            <input
+                                type={'text'}
+                                className='form-control'
+                                placeholder='mm/dd/yyyy'
+                                name='dateFinished'
+                                value={dateFinished}
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>

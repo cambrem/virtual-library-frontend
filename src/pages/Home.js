@@ -29,6 +29,7 @@ export default function Home() {
                             <th scope="col">#</th>
                             <th scope="col">Title</th>
                             <th scope="col">Author</th>
+                            <th scope="col">Genre</th>
                             <th scope="col">Rating</th>
                             <th scope="col">Actions</th>
                         </tr>
@@ -42,11 +43,12 @@ export default function Home() {
                                         <th scope="row">{index + 1}</th>
                                         <td>{book.title}</td>
                                         <td>{book.author}</td>
+                                        <td>{book.genre}</td>
                                         <td>{book.rating}</td>
                                         <td>
-                                            <Link className="btn btn-primary mx-2" to={`/viewbook/${book.id}`}>View</Link>
+                                            <Link className="btn btn-secondary mx-2" to={`/viewbook/${book.id}`}>View</Link>
                                             <Link className="btn btn-outline-primary mx-2" to={`/editbook/${book.id}`}>Edit</Link>
-                                            <button className="btn btn-danger mx-2" onClick={() => deleteBook(book.id)}>Delete</button>
+                                            <button className="btn btn-tertiary mx-2" onClick={() => deleteBook(book.id)}>X</button>
                                         </td>
                                     </tr>
                                 ))

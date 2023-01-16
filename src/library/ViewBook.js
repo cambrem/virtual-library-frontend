@@ -7,6 +7,8 @@ export default function ViewBook() {
     const [book,setBook]=useState({
         title:'',
         author:'',
+        genre: '',
+        dateFinished:'',
         rating:'',
         notes:''
     })
@@ -26,17 +28,21 @@ export default function ViewBook() {
         <div className='container'>
             <div className='row'>
                 <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
-                    <h2 className='text-center m-4'>Book Details</h2>
+                    <h2 className='text-center m-4'>{book.title}</h2>
                     <div className='card'>
                         <div className='card-header'>
                             <ul className='list-group list-group-flush'>
                                 <li className='list-group-item'>
-                                    <b>Title: </b>
-                                    {book.title}
-                                </li>
-                                <li className='list-group-item'>
                                     <b>Author: </b>
                                     {book.author}
+                                </li>
+                                <li className='list-group-item'>
+                                    <b>Genre: </b>
+                                    {book.genre}
+                                </li>
+                                <li className='list-group-item'>
+                                    <b>Date Finished: </b>
+                                    {book.dateFinished}
                                 </li>
                                 <li className='list-group-item'>
                                     <b>Rating: </b>
