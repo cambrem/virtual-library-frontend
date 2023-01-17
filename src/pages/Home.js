@@ -42,13 +42,12 @@ export default function Home() {
                                     value={sortBy}
                                     onChange={handleChange}
                                 >
-                                    <option value={''}>Select</option>
+                                    <option value={""} className="light-lettering">Select</option>
                                     <option value={'rating'}>Rating</option>
                                     <option value={'dateFinished'}>Date Finished</option>
                                     <option value={'genre'}>Genre</option>
                                 </select>
                             </th>
-                            <th scope="col">Title</th>
                             <th scope="col">Author</th>
                             <th scope="col">Genre</th>
                             <th scope="col">Date Finished</th>
@@ -66,8 +65,7 @@ export default function Home() {
                                 })
                                 .map((book, index) => (
                                     <tr key={book.id}>
-                                        <th scope="row">{index + 1}</th>
-                                        <td>{book.title}</td>
+                                        <th scope="row">{book.title}</th>
                                         <td>{book.author}</td>
                                         <td>{book.genre}</td>
                                         <td>{book.dateFinished}</td>
