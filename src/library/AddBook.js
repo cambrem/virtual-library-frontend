@@ -21,19 +21,16 @@ export default function AddBook() {
 
     const handleYearChange = (event) => {
         setYear(event.target.value);
-        setBook({...book, dateFinished: `${day}/${month}/${year}` });
         console.log(year);
         console.log(book);
     }
     const handleMonthChange = (event) => {
         setMonth(event.target.value);
-        setBook({...book, dateFinished: `${day}/${month}/${year}` });
         console.log(month);
         console.log(book);
     }
     const handleDayChange = (event) => {
         setDay(event.target.value);
-        setBook({...book, dateFinished: `${day}/${month}/${year}` });
         console.log(day);
         console.log(book);
     }
@@ -41,18 +38,15 @@ export default function AddBook() {
     const { title, author, genre, dateFinished, rating, notes } = book
 
     const onInputChange = (e) => {
-        setBook({ ...book, [e.target.name]: e.target.value })
+        setBook(prevState => ({...prevState, [e.target.name]: e.target.value }));
+        setBook(prevState => ({...prevState, dateFinished: `${month}/${day}/${year}` }));
         console.log(e.target.value);
         console.log(book);
     }
 
-    const onSubmit = async (e) => {
 
+    const onSubmit = async (e) => {
         e.preventDefault();
-        setBook({
-            ...book, 
-            dateFinished: `${day}/${month}/${year}`
-        });
         console.log(year + '-' + month + '-' + day);
         console.log(book);
         await axios.post("http://localhost:8080/book", book);
