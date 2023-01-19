@@ -81,7 +81,7 @@ export default function EditBook() {
                                 value={genre}
                                 onChange={(e) => onInputChange(e)}
                             >
-                                <option value={""} className="light-lettering">Select</option>
+                                <option value="" disabled selected>Select</option>
                                 <option value={"Fiction"}>Fiction</option>
                                 <option value={"Non-Fiction"}>Non-Fiction</option>
                             </select>
@@ -109,7 +109,7 @@ export default function EditBook() {
                                 value={rating}
                                 onChange={(e) => onInputChange(e)}
                             >
-                                <option value={""} className="light-lettering">Select</option>
+                                <option value="" disabled selected>Select</option>
                                 <option value={1}>1</option>
                                 <option value={2}>2</option>
                                 <option value={3}>3</option>

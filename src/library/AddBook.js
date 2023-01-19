@@ -19,25 +19,42 @@ export default function AddBook() {
     const [day, setDay] = useState('');
     const [year, setYear] = useState('');
 
+    const handleYearChange = (event) => {
+        setYear(event.target.value);
+        setBook({...book, dateFinished: `${day}/${month}/${year}` });
+        console.log(year);
+        console.log(book);
+    }
     const handleMonthChange = (event) => {
         setMonth(event.target.value);
+        setBook({...book, dateFinished: `${day}/${month}/${year}` });
+        console.log(month);
+        console.log(book);
     }
     const handleDayChange = (event) => {
         setDay(event.target.value);
+        setBook({...book, dateFinished: `${day}/${month}/${year}` });
+        console.log(day);
+        console.log(book);
     }
-    const handleYearChange = (event) => {
-        setYear(event.target.value);
-    }
-
+    
     const { title, author, genre, dateFinished, rating, notes } = book
 
     const onInputChange = (e) => {
         setBook({ ...book, [e.target.name]: e.target.value })
+        console.log(e.target.value);
+        console.log(book);
     }
 
     const onSubmit = async (e) => {
+
         e.preventDefault();
-        setBook({ ...book, dateFinished: `${month}/${day}/${year}` });
+        setBook({
+            ...book, 
+            dateFinished: `${day}/${month}/${year}`
+        });
+        console.log(year + '-' + month + '-' + day);
+        console.log(book);
         await axios.post("http://localhost:8080/book", book);
         navigate("/");
     }
@@ -85,7 +102,7 @@ export default function AddBook() {
                                 value={genre}
                                 onChange={(e) => onInputChange(e)}
                             >
-                                <option value={""} className="light-lettering">Select</option>
+                                <option value="" disabled selected>Select</option>
                                 <option value={"Fiction"}>Fiction</option>
                                 <option value={"Non-Fiction"}>Non-Fiction</option>
                             </select>
@@ -96,17 +113,26 @@ export default function AddBook() {
                                 Date Finished
                             </label>
                             <div className="form-group">
-                                <select className='form-control' name='month' onChange={handleMonthChange}>
+                                <select
+                                    className='form-control'
+                                    name='month'
+                                    onChange={(e) => handleMonthChange(e)}>
                                     <option value="" disabled selected>Month</option>
                                     <option value="01">January</option>
                                     <option value="02">February</option>
                                 </select>
-                                <select className='form-control' name='day' onChange={handleDayChange}>
+                                <select
+                                    className='form-control'
+                                    name='day'
+                                    onChange={(e) => handleDayChange(e)}>
                                     <option value="" disabled selected>Day</option>
                                     <option value="01">1</option>
                                     <option value="02">2</option>
                                 </select>
-                                <select className='form-control' name='year' onChange={handleYearChange}>
+                                <select
+                                    className='form-control'
+                                    name='dateFinished'
+                                    onChange={(e) => handleYearChange(e)}>
                                     <option value="" disabled selected>Year</option>
                                     <option value="2022">2022</option>
                                     <option value="2021">2021</option>
@@ -124,7 +150,7 @@ export default function AddBook() {
                                 value={rating}
                                 onChange={(e) => onInputChange(e)}
                             >
-                                <option value={""} className="light-lettering">Select</option>
+                                <option value="" disabled selected>Select</option>
                                 <option value={1}>1</option>
                                 <option value={2}>2</option>
                                 <option value={3}>3</option>

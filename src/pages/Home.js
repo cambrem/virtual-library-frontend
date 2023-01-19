@@ -42,7 +42,7 @@ export default function Home() {
                                     value={sortBy}
                                     onChange={handleChange}
                                 >
-                                    <option value={""} className="light-lettering">Select</option>
+                                    <option value="" disabled selected>Select</option>
                                     <option value={'rating'}>Rating</option>
                                     <option value={'dateFinished'}>Date Finished</option>
                                     <option value={'genre'}>Genre</option>
