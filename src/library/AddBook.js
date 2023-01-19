@@ -15,6 +15,20 @@ export default function AddBook() {
         notes: ""
     })
 
+    const [month, setMonth] = useState('');
+    const [day, setDay] = useState('');
+    const [year, setYear] = useState('');
+
+    const handleMonthChange = (event) => {
+        setMonth(event.target.value);
+    }
+    const handleDayChange = (event) => {
+        setDay(event.target.value);
+    }
+    const handleYearChange = (event) => {
+        setYear(event.target.value);
+    }
+
     const { title, author, genre, dateFinished, rating, notes } = book
 
     const onInputChange = (e) => {
@@ -23,6 +37,7 @@ export default function AddBook() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        setBook({ ...book, dateFinished: `${month}/${day}/${year}` });
         await axios.post("http://localhost:8080/book", book);
         navigate("/");
     }
@@ -80,15 +95,25 @@ export default function AddBook() {
                             <label htmlFor='dateFinished' className='form-label'>
                                 Date Finished
                             </label>
-                            <input
-                                type={'text'}
-                                className='form-control'
-                                placeholder='mm/dd/yyyy'
-                                name='dateFinished'
-                                value={dateFinished}
-                                onChange={(e) => onInputChange(e)}
-                            />
+                            <div className="form-group">
+                                <select className='form-control' name='month' onChange={handleMonthChange}>
+                                    <option value="" disabled selected>Month</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                </select>
+                                <select className='form-control' name='day' onChange={handleDayChange}>
+                                    <option value="" disabled selected>Day</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                </select>
+                                <select className='form-control' name='year' onChange={handleYearChange}>
+                                    <option value="" disabled selected>Year</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                </select>
+                            </div>
                         </div>
+
                         <div className='mb-3'>
                             <label htmlFor='rating' className='form-label'>
                                 Rating

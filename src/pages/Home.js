@@ -60,7 +60,7 @@ export default function Home() {
                             library
                                 .sort((a, b) => {
                                     if (sortBy === 'genre') { return a.genre.localeCompare(b.genre) }
-                                    else if (sortBy === 'dateFinished') { return new Date(a.dateFinished) - new Date(b.dateFinished) }
+                                    else if (sortBy === 'dateFinished') { return new Date(b.dateFinished) - new Date(a.dateFinished) }
                                     else if (sortBy === 'rating') { return b.rating - a.rating }
                                 })
                                 .map((book, index) => (
